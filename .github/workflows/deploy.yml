@@ -1,6 +1,8 @@
 name: rust项目打包
 on: push
 
+permissions:
+  contents: write
 jobs:
   rust-build:
     name: cargo build工作
@@ -8,7 +10,14 @@ jobs:
     steps:
       - name: 读取仓库内容
         uses: actions/checkout@v4
-      - name: 检查 cargo 版本
-        run: cargo --version
-      - name: 开始 cargo 构建
-        run: cargo build --release
+
+      - name: 检查 cargo 版本 开始构建
+        run: |
+          cargo --version
+          cargo build --release
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v3
+        with:
+          name: release
+          path: target/release/web-action
