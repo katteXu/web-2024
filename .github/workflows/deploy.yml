@@ -16,8 +16,14 @@ jobs:
           cargo --version
           cargo build --release
 
-      - name: 上传构建产物
-        uses: actions/upload-artifact@v3
+      # - name: 上传构建产物
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: release
+      #     path: target/release/web-action
+
+      - name: 分支部署
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          name: release
-          path: target/release/web-action
+          branch: gh-pages
+          folder: ./target/release/web-action
