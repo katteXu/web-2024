@@ -1,9 +1,14 @@
+name: rust项目打包
 on: push
 
 jobs:
   rust-build:
+    name: cargo build工作
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: cargo --version
-      - run: cargo build --release
+      - name: 读取仓库内容
+        uses: actions/checkout@v4
+      - name: 检查 cargo 版本
+        run: cargo --version
+      - name: 开始 cargo 构建
+        run: cargo build --release
