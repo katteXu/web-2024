@@ -26,4 +26,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: ./target/release/web-action
+          folder: target/release
