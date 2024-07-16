@@ -4,6 +4,6 @@ jobs:
   rust-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout@v4
+      - uses: actions/checkout@v4
       - run: cargo --version
       - run: cargo build --release
